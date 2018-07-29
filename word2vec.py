@@ -22,8 +22,8 @@ class Word2Vec:
         method: Word2Vec algorithm (string) - 'sg' (Skip-Gram) or 'cbow' (CBOW)
 
     Attributes:
-        train: actually progress training
-        most_similar: return top n most similar words given input word (cosine similarity)
+        train: train word vectors.
+        most_similar: return top n most similar words given input word (using cosine similarity).
     """
     def __init__(self, method='sg'):
         self.method = method
@@ -73,6 +73,7 @@ class Word2Vec:
         Build samples for training consist of (center, context) which are subsampled.
 
         Usage:
+            self._build_vocab and self._build_samples are called in self.train
             1. Build vocabulary calling self._build_vocab(corpus).
             2. Build training samples (center word, context) using vocabulary.
 
@@ -82,7 +83,7 @@ class Word2Vec:
             window_size: window size for context
 
         Return:
-            samples with (center, context) words. context is list.
+            samples with (center, context) words. type of context is list.
         """
         tokens = []
         samples = []
@@ -152,7 +153,7 @@ class Word2Vec:
             window_size: window size
             negative: the number of negative samples
             power: multiplier for unigram distribution for negative sampling
-            min_count: minimum value to count
+            min_count: minumum apprearnce to be included in vocabulary
             threshold: subsampling threshold, default 1e-5
             eta: learning rate, default 0.01
         """
