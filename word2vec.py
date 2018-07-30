@@ -16,14 +16,14 @@ def sigmoid(x):
 
 class Word2Vec:
     """
-    Train word vectors.
+    Train word embedding vectors.
 
     Args:
         method: Word2Vec algorithm (string) - 'sg' (Skip-Gram) or 'cbow' (CBOW)
 
     Attributes:
-        train: train word vectors.
-        most_similar: return top n most similar words given input word (using cosine similarity).
+        train: train word embedding vectors.
+        most_similar: return top n most similar words with input word (using cosine similarity).
     """
     def __init__(self, method='sg'):
         self.method = method
@@ -94,7 +94,7 @@ class Word2Vec:
                     tokens.clear()
                     words = [word.lower() for word in line.strip().split()]
                     for word in words:
-                        # prob: subsampling probability
+                        # keep_prob: subsampling probability
                         keep_prob = 1 - np.sqrt(threshold / self.token_count[word])
                         # if random probability is higher than prob, add to tokens
                         if np.random.random() > keep_prob:
