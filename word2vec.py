@@ -43,7 +43,7 @@ class Word2Vec:
         token_count = defaultdict(int)
         token_list = []
         # when input type of corpus is file
-        if type(corpus) == str:
+        if isinstance(corpus, str):
             with open(corpus, 'r') as f:
                 for line in f.read().splitlines():
                     tokens = line.strip().split()
@@ -88,7 +88,7 @@ class Word2Vec:
         tokens = []
         samples = []
 
-        if type(corpus) == str:
+        if isinstance(corpus, str):
             with open(corpus, 'r') as f:
                 for line in f.read().splitlines():
                     tokens.clear()
