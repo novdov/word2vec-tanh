@@ -140,9 +140,15 @@ class Word2Vec:
             samples = np.random.choice(self.tokens, negative, False, self.prob)
         return samples
 
-    def train(self, corpus, dim=100,
-              window_size=3, negative=5, power=0.75,
-              min_count=3, threshold=1e-5, eta=0.01):
+    def train(self, 
+              corpus,
+              dim=100,
+              window_size=3,
+              negative=5,
+              power=0.75,
+              min_count=3,
+              threshold=1e-5,
+              eta=0.01):
         """
         Train word embedding vector.
             embedding vector: self.W1
